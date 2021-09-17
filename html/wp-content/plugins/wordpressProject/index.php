@@ -12,17 +12,28 @@ Licence: MIT
 
 if (!defined('ABSPATH')) exit;
 
-function Activate(){
+function Activation() {
+    // crea una tabla de bd desde wordpress
+    global $wpdb;
+
+    $sql = "CREATE TABLE IF NOT EXISTS {$wpdb->prefix}donaciones(
+        `DonacionId` INT NOT NULL AUTO_INCREMENT,
+        `Monto` INT NOT NULL,
+        `Nombre` VARCHAR(50) NULL,
+        `Email` VARCHAR(50) NULL,
+        `Telefono` INT NOT NULL,
+        PRIMARY KEY (`DonacionId`));";
+
+    $wpdb->query($sql);
 }
 
-function Deactivate(){
-	flush_rewrite_rules();
+function Deactivation() {
+    flush_rewrite_rules();
 }
 
-echo "Hola soy plugin";
 
-register_activation_hook(__FILE__, 'Activate');
-register_deactivation_hook(__FILE__, 'Deactivate');
+register_activation_hook(__FILE__, 'Activation');
+register_deactivation_hook(__FILE__, 'Deactivation');
 
 add_action('admin_menu', 'CreateMenu');
 
@@ -62,13 +73,13 @@ add_shortcode('ShortcodeDonate', 'ShortcodeDonation');
 function ShortcodeDonation($atts) {
     //attributes
     $atts = shortcode_atts(
-        array( 'button_text3' => '[Title]' ,
+        array( 'title_text3' => '[Title]' ,
         ), $atts
     );
     return '
     <div class="donation-plugin-modal" style="display: block; background: #362277; padding: 20px; border-radius: 10px; width:30%">
     <h2 style="color:#e13e3f; text-align:center">'
-    . $atts[button_text3] .
+    . $atts['title_text3'] .
         '</h2><br/>
         <form method="post" action="" style="text-align: center;">
             <input type="number" name="Importe" placeholder="Monto a aportar" style="border-radius: 10px; border: none; outline: none; width: 100%"/><br /><br />
@@ -82,4 +93,3 @@ function ShortcodeDonation($atts) {
 }
 
 
-?>
