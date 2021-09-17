@@ -16,3 +16,7 @@
 /logs/*
 #mysql
 /php-playground/*
+
+#docker-yml
+/docker-compose.yml
+docker-compose.yml

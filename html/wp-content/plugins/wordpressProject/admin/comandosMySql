@@ -1,0 +1,4 @@
+        INSERT INTO wp_donaciones(
+        `DonacionId`, `Monto`, `Nombre`, `Email`, `Telefono`
+        )
+        VALUES('2', '50', 'CARLA SANCHEZ', 'carlasanchezcorrea@gmail.com', '964760097');
