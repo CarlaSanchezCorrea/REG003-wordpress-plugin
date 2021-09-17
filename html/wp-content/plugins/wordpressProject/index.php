@@ -1,21 +1,19 @@
 <?php
 /*
-Plugin Name: plugin donation
-Plugin URI: https://example.com/plugin-name
-Description: Este un plugin para donación de dinero a organizaciones sin fines de lucro y puede ser integrado con la pasarela de pago Culqi.
-Version: 0.0.1
-Requires at Least: 5.6.1
-Requires PHP: 7.4.14
-Author: Astrid & Mery
-Licence: MIT
-*/
+ * Plugin Name:       DonationPlugin
+ * Plugin URI:        https://example.com/plugins/the-basics/
+ * Description: Este un plugin para donación de dinero a organizaciones sin fines de lucro y puede ser integrado con la pasarela de pago Culqi.
+ * Version: 0.0.1
+ * Requires at Least: 5.6.1
+ * Requires PHP: 7.4.14
+ * Author: Carla & Yessenia
+ */
 
 if (!defined('ABSPATH')) exit;
 
 function Activation() {
     // crea una tabla de bd desde wordpress
     global $wpdb;
-
     $sql = "CREATE TABLE IF NOT EXISTS {$wpdb->prefix}donaciones(
         `DonacionId` INT NOT NULL AUTO_INCREMENT,
         `Monto` INT NOT NULL,
@@ -23,20 +21,17 @@ function Activation() {
         `Email` VARCHAR(50) NULL,
         `Telefono` INT NOT NULL,
         PRIMARY KEY (`DonacionId`));";
-
     $wpdb->query($sql);
 }
 
-function Deactivation() {
-    flush_rewrite_rules();
+function Deactivation(){
+	flush_rewrite_rules();
 }
-
 
 register_activation_hook(__FILE__, 'Activation');
 register_deactivation_hook(__FILE__, 'Deactivation');
 
 add_action('admin_menu', 'CreateMenu');
-
 function CreateMenu() {
 	add_menu_page(
 		'Instrucciones de uso del plugin Menú', //pageTitle
@@ -51,7 +46,7 @@ function CreateMenu() {
 		'Submenu 1',
 		'Historial de Donaciones',
 		'manage_options',
-		plugin_dir_path(__FILE__) . 'admin/history.php',
+		plugin_dir_path(__FILE__) . 'admin/tablaDonacion.php',
 		null,
 		'2'
 	);
@@ -65,8 +60,6 @@ function CreateMenu() {
 		'3'
 	);
 }
-
-
 
 
 add_shortcode('ShortcodeDonate', 'ShortcodeDonation');
