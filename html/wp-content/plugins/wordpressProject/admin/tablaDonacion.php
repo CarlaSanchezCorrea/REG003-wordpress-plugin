@@ -32,8 +32,8 @@
                     echo"
                         <tr>
                             <td>$donacionId</td>
-                            <td>$nombre</td>
                             <td>$monto</td>
+                            <td>$nombre</td>
                             <td>$email</td>
                             <td>$telefono</td>
                             <td>$shortcode</td>
