@@ -1,12 +1,12 @@
 <?php  
     $styletUrl =  plugins_url("wordpressProject/admin/styless.css", "" ); //path file style
 
-    //$index = get the last register from table "wp_settings"
-    $index = $wpdb->get_var("SELECT * FROM `wp_settings` ORDER BY SettingsId DESC LIMIT 1");
+    //$id = get the last register from table "wp_settings"
+    $id = $wpdb->get_var("SELECT * FROM `wp_settings` ORDER BY SettingsId DESC LIMIT 1");
     //$varaible_name = get variable 'Varaible_Name'  from table "wp_settings" of the last register
-    $secretKey = $wpdb->get_var("SELECT `SecretKey` FROM `wp_settings` WHERE `SettingsId`= $index ");
-    $PublicKey = $wpdb->get_var("SELECT `PublicKey` FROM `wp_settings` WHERE `SettingsId`= $index  ");
-    $OrgName = $wpdb->get_var("SELECT `OrgName` FROM `wp_settings` WHERE `SettingsId`= $index  ");
+    $secretKey = $wpdb->get_var("SELECT `SecretKey` FROM `wp_settings` WHERE `SettingsId`= $id ");
+    $PublicKey = $wpdb->get_var("SELECT `PublicKey` FROM `wp_settings` WHERE `SettingsId`= $id  ");
+    $OrgName = $wpdb->get_var("SELECT `OrgName` FROM `wp_settings` WHERE `SettingsId`= $id  ");
 
     echo '
     <!DOCTYPE html>

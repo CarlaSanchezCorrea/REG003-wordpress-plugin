@@ -65,6 +65,7 @@ register_deactivation_hook(__FILE__, 'Deactivation'); //wrdpss_function('_file_'
 			'manage_options', //capability
 			plugin_dir_path(__FILE__) . 'admin/mainpage.php', //menuSlug-path file
 			null, //functionName
+			plugin_dir_url(__FILE__) . 'admin/icon.png',
 			'1' //position
 		);
 	// #region----------------------Option Position #2-------------------

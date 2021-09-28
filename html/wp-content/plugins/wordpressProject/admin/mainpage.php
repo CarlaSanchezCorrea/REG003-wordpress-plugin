@@ -41,8 +41,8 @@
                 <p>Texto de más de 5 letras</p>
             </section>
           </div>
+          <p>*La moneda está predeterminado en <i>"PEN"</i>*</p>
         </div>
-        <br/>
         <div style="margin-left:1em" class="w-50"> 
           <p>
             Para incorporar nuestro formulario a su plantilla necesita agregar un nuevo bloque  con la etiqueta <i>"Shortcode" <strong>[ / ]</strong></i>. Luego, deberá llamarlo con la siguiente línea :<br/><br/>
